@@ -26,7 +26,7 @@
 #     return any(value >= 2 for value in hashmap.values()) 
 
 
-# HashSet solution --------------------------------------------------
+# HashSet solution : o(n) solution --------------------------------------------------
 def containsDuplicate(nums) -> bool:
         seen = set()
 
@@ -43,6 +43,21 @@ def containsDuplicate(nums) -> bool:
             print(seen, ': seen outside')
         return False
 
+
+# Hashmap solution : o(n) solution --------------------------------------------------
+def containsDuplicate(nums) -> bool:
+        seen = {}
+        for num in nums:
+            if num in seen and seen[num] >= 1:
+                return True
+            # seen[num] = seen.get(num, 0) + 1 - Option if this makes sense
+            
+            elif num in seen:
+                 seen[num] += 1
+            else:
+                 seen[num] = 1
+
+        return False
 
 
 # Example usage:
